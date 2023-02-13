@@ -1,50 +1,49 @@
 const bookList = document.querySelector('#bookList');
-const addBtn = document.querySelector('#addBtn')
-const title = document.querySelector('#title')
-const arthur = document.querySelector('#arthur')
+const addBtn = document.querySelector('#addBtn');
+const title = document.querySelector('#title');
+const arthur = document.querySelector('#arthur');
 
-let bookObj = [
-   
-]
-addBtn.addEventListener('click',function(){
-    if(title.value) {
-    let titleValue = title.value
-    let arthurValue = arthur.value
-    const newBook = new Object()
-     newBook.bookTitle = titleValue
-     newBook.arthur = arthurValue
-     bookObj.push(newBook)
-     let objVar = ''
-     for(let i = 0;i < bookObj.length;i+=1) {
-         bookObj[i].id = i + 1
-        objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)" >Remove</button></li>`
-     }
-     bookList.innerHTML = objVar
-     localStorage.setItem('inputArr',JSON.stringify(bookObj))
+let bookObj = [];
+function loop() {
+  let objVar = '';
+  for (let i = 0; i < bookObj.length; i += 1) {
+    objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`;
+  }
+  bookList.innerHTML = objVar;
+}
+addBtn.addEventListener('click', () => {
+  if (title.value) {
+    const titleValue = title.value;
+    const arthurValue = arthur.value;
+    const newBook = {};
+    newBook.bookTitle = titleValue;
+    newBook.arthur = arthurValue;
+    bookObj.push(newBook);
+    let objVar = '';
+    for (let i = 0; i < bookObj.length; i += 1) {
+      bookObj[i].id = (i + 1).toString();
+      objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id= 'removeBtn' onClick="removeBook(this.id.toString())" >Remove</button></li>`;
     }
-})
-
-function removeBook(id){
-   let filteredArr = bookObj.filter(item => item.id != id)
-   bookObj = filteredArr
-   objVar = ''
-   for(let i = 0;i < bookObj.length;i+=1) {
-      objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`
-   }
-   bookList.innerHTML = objVar
-   localStorage.setItem('inputArr',JSON.stringify(bookObj))
+    bookList.innerHTML = objVar;
+    localStorage.setItem('inputArr', JSON.stringify(bookObj));
+  }
+});
+let filteredArr = '';
+function removeBook(id) {
+  filteredArr = bookObj.filter((item) => item.id !== id);
+  bookObj = filteredArr;
+  loop();
+  localStorage.setItem('inputArr', JSON.stringify(bookObj));
 }
-
-const outputArr = JSON.parse(localStorage.getItem('inputArr'))
- if(outputArr) {
-   bookObj = outputArr
+const outputArr = JSON.parse(localStorage.getItem('inputArr'));
+if (outputArr) {
+  bookObj = outputArr;
+} else if (filteredArr) {
+  bookObj = filteredArr;
 }
-else if (filteredArr){
-   bookObj = filteredArr
-}
-objVar = ''
-for(let i = 0;i < bookObj.length;i+=1) {
-    objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`
- }
- bookList.innerHTML = objVar
-
+loop();
+// ${bookObj[i].id.toString()}
+const removeBtn = document.querySelector('#removeBtn');
+removeBtn.addEventListener('click', () => {
+  removeBook();
+});
