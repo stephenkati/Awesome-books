@@ -2,7 +2,6 @@ const bookList = document.querySelector('#bookList');
 const addBtn = document.querySelector('#addBtn');
 const title = document.querySelector('#title');
 const arthur = document.querySelector('#arthur');
-
 let bookObj = [];
 function loop() {
   let objVar = '';
