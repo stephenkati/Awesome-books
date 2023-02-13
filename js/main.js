@@ -1,3 +1,4 @@
+/* eslint no-unused-vars:0 */
 const bookList = document.querySelector('#bookList');
 const addBtn = document.querySelector('#addBtn');
 const title = document.querySelector('#title');
@@ -6,7 +7,7 @@ let bookObj = [];
 function loop() {
   let objVar = '';
   for (let i = 0; i < bookObj.length; i += 1) {
-    objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`;
+    objVar += `<li id='lanzz'><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button onclick = 'removeBook(this.id)' id=${bookObj[i].id.toString()}>Remove</button></li>`;
   }
   bookList.innerHTML = objVar;
 }
@@ -21,7 +22,7 @@ addBtn.addEventListener('click', () => {
     let objVar = '';
     for (let i = 0; i < bookObj.length; i += 1) {
       bookObj[i].id = (i + 1).toString();
-      objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id= 'removeBtn' onClick="removeBook(this.id.toString())" >Remove</button></li>`;
+      objVar += `<li id='lanzz'><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button onclick = 'removeBook(this.id)' id=${bookObj[i].id.toString()}>Remove</button></li>`;
     }
     bookList.innerHTML = objVar;
     localStorage.setItem('inputArr', JSON.stringify(bookObj));
@@ -41,8 +42,3 @@ if (outputArr) {
   bookObj = filteredArr;
 }
 loop();
-// ${bookObj[i].id.toString()}
-const removeBtn = document.querySelector('#removeBtn');
-removeBtn.addEventListener('click', () => {
-  removeBook();
-});
