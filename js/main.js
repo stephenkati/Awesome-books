@@ -16,18 +16,35 @@ addBtn.addEventListener('click',function(){
      bookObj.push(newBook)
      let objVar = ''
      for(let i = 0;i < bookObj.length;i+=1) {
-        objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button>Remove</button></li>`
+         bookObj[i].id = i + 1
+        objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)" >Remove</button></li>`
      }
      bookList.innerHTML = objVar
      localStorage.setItem('inputArr',JSON.stringify(bookObj))
     }
 })
+
+function removeBook(id){
+   let filteredArr = bookObj.filter(item => item.id != id)
+   bookObj = filteredArr
+   objVar = ''
+   for(let i = 0;i < bookObj.length;i+=1) {
+      objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`
+   }
+   bookList.innerHTML = objVar
+   localStorage.setItem('inputArr',JSON.stringify(bookObj))
+}
+
 const outputArr = JSON.parse(localStorage.getItem('inputArr'))
-if(outputArr) {
+ if(outputArr) {
    bookObj = outputArr
+}
+else if (filteredArr){
+   bookObj = filteredArr
 }
 objVar = ''
 for(let i = 0;i < bookObj.length;i+=1) {
-    objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button>Remove</button></li>`
+    objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(this.id)">Remove</button></li>`
  }
  bookList.innerHTML = objVar
+
