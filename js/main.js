@@ -3,6 +3,9 @@ const addBtn = document.querySelector('#addBtn')
 const title = document.querySelector('#title')
 const arthur = document.querySelector('#arthur')
 
+const d = new Date();
+document.querySelector("#current-time").innerHTML = d;
+
 let bookObj = [
    
 ]
