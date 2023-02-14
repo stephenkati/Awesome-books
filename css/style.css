@@ -44,6 +44,7 @@ nav a {
 
 .all-books {
   width: 100vw;
+
   /* height: 80vh; */
   display: flex;
   flex-direction: column;
@@ -130,6 +131,4 @@ footer {
   width: 100vw;
   border-top: 2px solid black;
   font-size: 20px;
-  position: fixed;
-  bottom: 0;
 }
