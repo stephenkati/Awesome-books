@@ -52,3 +52,57 @@ if (outputArr) {
   bookObj = filteredArr;
 }
 BookObj.loop();
+
+const d = new Date();
+document.querySelector('#current-time').innerHTML = d;
+
+let bookObj = [
+
+];
+addBtn.addEventListener('click', () => {
+  if (title.value) {
+    const titleValue = title.value;
+    const arthurValue = arthur.value;
+    const newBook = {};
+    newBook.bookTitle = titleValue;
+    newBook.arthur = arthurValue;
+    bookObj.push(newBook);
+    let objVar = '';
+    for (let i = 0; i < bookObj.length; i += 1) {
+      bookObj[i].id = i + 1;
+      objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id} onClick="removeBook(${bookObj[i].id})" >Remove</button></li>`;
+    }
+    bookList.innerHTML = objVar;
+    localStorage.setItem('inputArr', JSON.stringify(bookObj));
+  }
+});
+
+let filteredArr = [];
+/* eslint-disable */
+function removeBook(id) {
+  filteredArr = bookObj.filter((item) => item.id !== id);
+  bookObj = filteredArr;
+  let objVar = '';
+  for (let i = 0; i < bookObj.length; i += 1) {
+    objVar += `<li>
+    <p>
+    <span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> 
+    </p> 
+    <button id=${bookObj[i].id.toString()} onClick="removeBook(${bookObj[i].id})">Remove</button>
+    </li>`;
+  }
+  bookList.innerHTML = objVar;
+  localStorage.setItem('inputArr', JSON.stringify(bookObj));
+}
+
+const outputArr = JSON.parse(localStorage.getItem('inputArr'));
+if (outputArr) {
+  bookObj = outputArr;
+} else if (filteredArr) {
+  bookObj = filteredArr;
+}
+let objVar = '';
+for (let i = 0; i < bookObj.length; i += 1) {
+  objVar += `<li><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button id=${bookObj[i].id.toString()} onClick="removeBook(${bookObj[i].id})">Remove</button></li>`;
+}
+bookList.innerHTML = objVar;

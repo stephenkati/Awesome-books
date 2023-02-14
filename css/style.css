@@ -44,7 +44,6 @@ nav a {
 
 .all-books {
   width: 100vw;
-
   /* height: 80vh; */
   display: flex;
   flex-direction: column;
