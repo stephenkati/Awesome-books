@@ -6,10 +6,12 @@ nav {
   position: fixed;
   top: 0;
   width: 97%;
-background-color: aliceblue;
-z-index: 2;
+  background-color: aliceblue;
+  z-index: 2;
+
   /* margin: 0 .5e; */
 }
+
 body div {
   padding-top: 5rem;
 }
@@ -139,6 +141,7 @@ footer {
   padding-left: 4rem;
   top: 12rem;
 }
+
 .removeDisplay {
   position: absolute;
   display: none;
