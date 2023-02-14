@@ -44,7 +44,6 @@ addBtn.addEventListener('click', () => {
   }
 });
 let filteredArr = '';
-//BookObj.removeBook()
 const outputArr = JSON.parse(localStorage.getItem('inputArr'));
 console.log(outputArr)
 if (outputArr) {
