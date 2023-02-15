@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <nav>
+    <nav  id="header">
         <p class="nav-header"> Awesome Books </p>
         <ul>
-            <li> <a href="#list" class="nav-item">List</a> </li>
-            <li> <a href="#addNew" class="nav-item">Add new</a> </li>
-            <li> <a href="#contact" class="nav-item">Contact</a> </li>
+            <li> <a id="listTab" href="" class="nav-item">List</a> </li>
+            <li> <a id="addNewTab" href="" class="nav-item">Add New</a> </li>
+            <li> <a id="contactTab" href="" class="nav-item">Contact</a> </li>
         </ul>
     </nav>
 
@@ -22,7 +22,7 @@
             <p id="current-time"></p>
         </div>
 
-        <div class="all-books" id="list">
+        <div class="all-books removeDisplay" id="list">
             <h1>All Books</h1>
             <ul id="bookList">
               
@@ -38,7 +38,7 @@
             </form>
         </div>
 
-        <div class="contact" id="contact">
+        <div class="contact removeDisplay" id="contact">
             <h3>Contact Us</h3>
             <p>Do you have any follow up questions, recommendations or suggestion?</p>
             <p>Reach us on:</p>
@@ -47,7 +47,6 @@
                 <li>lanzzd191@gmail.com</li>
             </ul>
         </div>
-
         <footer>
             copyright
         </footer>

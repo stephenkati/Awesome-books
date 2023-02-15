@@ -1,22 +1,29 @@
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
   border: 2px solid black;
   position: fixed;
   top: 0;
-  width: 97%;
+  width: 98%;
+  background-color: aliceblue;
+  z-index: 2;
+  align-items: center;
+  margin: 0;
+}
 
-  /* margin: 0 .5e; */
+body div {
+  padding-top: 4rem;
 }
 
 nav ul {
+  padding-right: 1em;
   display: flex;
   flex-direction: row;
-  gap: 3em;
+  gap: 2em;
 }
 
 nav li {
+  padding: 0;
   list-style: none;
 }
 
@@ -26,30 +33,32 @@ nav a {
   cursor: pointer;
 }
 
+#addNewTab {
+  padding: 10px;
+  border-right: 2px solid black;
+  border-left: 2px solid black;
+}
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
-
-  /* padding: 10%; */
 }
 
 .date {
   position: absolute;
   right: 2em;
-  top: 4em;
+  top: 0;
 }
 
 .all-books {
   width: 100vw;
-
-  /* height: 80vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 6em;
+  padding-top: 4em;
 }
 
 .all-books ul {
@@ -90,6 +99,7 @@ nav a {
   display: flex;
   flex-direction: column;
   gap: 3em;
+  margin-bottom: -15rem;
   align-items: center;
 }
 
@@ -100,7 +110,7 @@ nav a {
 form {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
   gap: 1.5em;
   width: 325px;
   padding-bottom: 3em;
@@ -118,6 +128,7 @@ form {
 
 .contact {
   height: 80vh;
+  margin-bottom: -15rem;
 }
 
 .contact h3 {
@@ -126,9 +137,10 @@ form {
 }
 
 footer {
-  display: flex;
-  justify-content: center;
   width: 100vw;
   border-top: 2px solid black;
   font-size: 20px;
+  position: relative;
+  padding-left: 5rem;
+  top: 12rem;
 }
