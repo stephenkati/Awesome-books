@@ -3,11 +3,8 @@ nav {
   justify-content: space-between;
   padding: 10px;
   border: 2px solid black;
-  position: fixed;
   top: 0;
   width: 97%;
-
-  /* margin: 0 .5e; */
 }
 
 nav ul {
@@ -32,20 +29,16 @@ nav a {
   justify-content: center;
   align-items: center;
   position: relative;
-
-  /* padding: 10%; */
 }
 
 .date {
   position: absolute;
   right: 2em;
-  top: 4em;
+  top: 1em;
 }
-
 .all-books {
   width: 100vw;
-
-  /* height: 80vh; */
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,11 +79,12 @@ nav a {
 }
 
 .add-book {
-  height: 80vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   gap: 3em;
   align-items: center;
+  padding-top: 6em;
 }
 
 .add-book h2 {
@@ -117,7 +111,9 @@ form {
 }
 
 .contact {
-  height: 80vh;
+  height: auto;
+  display: block;
+  padding-top: 6em;
 }
 
 .contact h3 {
@@ -132,3 +128,10 @@ footer {
   border-top: 2px solid black;
   font-size: 20px;
 }
+
+/* .hide {
+  display: none;
+}
+.show {
+  display: flex;
+} */

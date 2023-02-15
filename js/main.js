@@ -57,3 +57,45 @@ BookObj.loop();
 
 const d = new Date();
 document.querySelector('#current-time').innerHTML = d;
+
+const logo = document.querySelector('#logo');
+const list = document.querySelector('#list');
+const addnew = document.querySelector('.add-book');
+const contact = document.querySelector('#contact');
+const navlist = document.querySelector('#navlist');
+const navaddnew = document.querySelector('#navaddnew');
+const navcontact = document.querySelector('#navcontact');
+
+navlist.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'flex'
+  addnew.style.display = 'none'
+  contact.style.display = 'none'
+})
+
+navaddnew.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'none'
+  addnew.style.display = 'flex'
+  contact.style.display = 'none'
+})
+
+navcontact.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'none'
+  addnew.style.display = 'none'
+  contact.style.display = 'block'
+})
+
+logo.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'flex'
+  addnew.style.display = 'none'
+  contact.style.display = 'none'
+})
+
+window.addEventListener('load', ()=>{
+  list.style.display = 'flex'
+  addnew.style.display = 'none'
+  contact.style.display = 'none'
+})
