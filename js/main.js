@@ -93,9 +93,3 @@ logo.addEventListener('click', (e)=>{
   addnew.style.display = 'none'
   contact.style.display = 'none'
 })
-
-window.addEventListener('load', ()=>{
-  list.style.display = 'flex'
-  addnew.style.display = 'none'
-  contact.style.display = 'none'
-})
