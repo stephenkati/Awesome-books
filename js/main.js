@@ -4,27 +4,39 @@ const addBtn = document.querySelector('#addBtn');
 const title = document.querySelector('#title');
 const arthur = document.querySelector('#arthur');
 let bookObj = [];
-const addNewTab = document.querySelector('#addNew')
-const listTab = document.querySelector('#list')
-const contactTab = document.querySelector('#contact')
-const header = document.querySelector('#header')
-header.addEventListener('click',function(e) {
-if(e.target.id === 'listTab') {
- addNewTab.classList.add('removeDisplay')
- contactTab.classList.add('removeDisplay')
- listTab.classList.remove('removeDisplay')
-}
-else if(e.target.id === 'addNewTab') {
-  addNewTab.classList.remove('removeDisplay')
-  listTab.classList.add('removeDisplay')
- contactTab.classList.add('removeDisplay')
-}
-else if(e.target.id === 'contactTab') {
-  contactTab.classList.remove('removeDisplay')
-  listTab.classList.add('removeDisplay')
- addNewTab.classList.add('removeDisplay')
-}
+
+const navlist = document.querySelector('#listTab')
+const navaddnew = document.querySelector('#addNewTab')
+const navcontact = document.querySelector('#contactTab')
+const list = document.querySelector('#list')
+const addnew = document.querySelector('#addNew')
+const contact = document.querySelector('#contact')
+
+navlist.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'flex'
+  addnew.style.display = 'none'
+  contact.style.display = 'none'
 })
+navaddnew.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'none'
+  addnew.style.display = 'flex'
+  contact.style.display = 'none'
+})
+navcontact.addEventListener('click', (e)=>{
+  e.preventDefault()
+  list.style.display = 'none'
+  addnew.style.display = 'none'
+  contact.style.display = 'block'
+})
+window.addEventListener('load', (e)=>{
+  e.preventDefault()
+  list.style.display = 'flex'
+  addnew.style.display = 'none'
+  contact.style.display = 'none'
+})
+
 class Books {
   constructor(bookTitle,arthur,id) {
     this.bookTitle = bookTitle,
@@ -47,6 +59,11 @@ class BookObj {
      BookObj.loop();
      localStorage.setItem('inputArr', JSON.stringify(bookObj));
    }
+
+   static resetfields(){
+    document.querySelector('#title').value = ''
+    document.querySelector('#arthur').value = ''
+   }
 }
  
 addBtn.addEventListener('click', () => {
@@ -62,6 +79,7 @@ addBtn.addEventListener('click', () => {
     }
     bookList.innerHTML = objVar;
     localStorage.setItem('inputArr', JSON.stringify(bookObj));
+    BookObj.resetfields()
   }
 });
 let filteredArr = '';
@@ -72,3 +90,6 @@ if (outputArr) {
   bookObj = filteredArr;
 }
 BookObj.loop();
+
+const d = new Date();
+document.getElementById("current-time").innerHTML = d;

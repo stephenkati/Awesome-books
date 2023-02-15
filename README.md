@@ -273,7 +273,7 @@ I would like to thankmy Microverse team and my coding partners for their support
 
 ## 📝 License <a name="license"></a>
 
-This project is <a href="https://github.com/stephenkati/Global-Canvas-Art-Exhibition-Concert-/blob/features/License.md"> MIT  licensed.</a>
+This project is <a href="https://github.com/stephenkati/Awesome-books/blob/master/License.md"> MIT  licensed.</a>
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
