@@ -98,5 +98,12 @@ if (outputArr) {
 }
 BookObj.loop();
 
-const d = new Date();
-document.getElementById("current-time").innerHTML = d;
+setInterval(()=>{
+  let timer = document.getElementById("current-time")
+  let htimer;
+  const d = new Date();
+  day = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
+  htimer = d.toLocaleTimeString();
+  timer.innerHTML =day[d.getDay()]+ ' ' + month[d.getMonth()] +', '+ d.getDate() +' '+ d.getFullYear() + ' '+ htimer;
+},1000)
