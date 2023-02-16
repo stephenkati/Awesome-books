@@ -11,7 +11,14 @@ const navcontact = document.querySelector('#contactTab')
 const list = document.querySelector('#list')
 const addnew = document.querySelector('#addNew')
 const contact = document.querySelector('#contact')
+const navlink = document.querySelectorAll('.nav-item')
 
+navlink.forEach(link =>{
+  link.addEventListener('click', ()=>{
+    document.querySelector('.link-color')?.classList.remove('link-color')
+    link.classList.add('link-color')
+  })
+})
 navlist.addEventListener('click', (e)=>{
   e.preventDefault()
   list.style.display = 'flex'

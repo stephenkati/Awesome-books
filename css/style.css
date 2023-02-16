@@ -33,6 +33,10 @@ nav a {
   cursor: pointer;
 }
 
+.link-color {
+  color: hsl(11deg 80% 38%);
+}
+
 #addNewTab {
   padding: 10px;
   border-right: 2px solid black;
