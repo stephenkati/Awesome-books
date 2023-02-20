@@ -79,6 +79,10 @@ nav a {
   padding: 0 0.2em;
 }
 
+.all-books li p span {
+  padding: 0 5px;
+}
+
 .all-books li:nth-child(odd) {
   background-color: aqua;
 }
