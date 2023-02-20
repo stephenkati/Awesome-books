@@ -1,10 +1,4 @@
 /* eslint-disable */
-const bookList = document.querySelector('#bookList');
-const addBtn = document.querySelector('#addBtn');
-const title = document.querySelector('#title');
-const arthur = document.querySelector('#arthur');
-let bookObj = [];
-
 const navlist = document.querySelector('#listTab')
 const navaddnew = document.querySelector('#addNewTab')
 const navcontact = document.querySelector('#contactTab')
@@ -45,65 +39,85 @@ window.addEventListener('load', (e)=>{
 })
 
 class Books {
-  constructor(bookTitle,arthur,id) {
-    this.bookTitle = bookTitle,
-    this.arthur = arthur,
-    this.id = id
+  constructor(title, arthur) {
+    this.title = title;
+    this.arthur = arthur;
   }
 }
-class BookObj {
- static  loop() {
-    let objVar = '';
-    for (let i = 0; i < bookObj.length; i += 1) {
-      objVar += `<li id='lanzz'><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button onclick = 'BookObj.removeBook(this.id)' id=${bookObj[i].id.toString()}>Remove</button></li>`;
+
+class BookCollection {
+  constructor() {
+    this.bookObj = [];
+    this.bookList = document.querySelector('#bookList');
+    this.title = document.querySelector('#title');
+    this.arthur = document.querySelector('#arthur');
+    this.addBtn = document.querySelector('#addBtn');
+
+    if (localStorage.getItem('inputArr')) {
+      this.bookObj = JSON.parse(localStorage.getItem('inputArr'));
+      this.displayBooks();
     }
-    bookList.innerHTML = objVar;
+
+    this.addBtn.addEventListener('click', this.newBook.bind(this));
   }
 
-  static  removeBook(id) {
-     filteredArr = bookObj.filter((item) => item.id !== id);
-     bookObj = filteredArr;
-     BookObj.loop();
-     localStorage.setItem('inputArr', JSON.stringify(bookObj));
-   }
-
-   static resetfields(){
-    document.querySelector('#title').value = ''
-    document.querySelector('#arthur').value = ''
-   }
-}
- 
-addBtn.addEventListener('click', () => {
-  if (title.value) {
-    const titleValue = title.value;
-    const arthurValue = arthur.value;
-    const newBook = new Books(titleValue,arthurValue)
-    bookObj.push(newBook);
-    let objVar = '';
-    for (let i = 0; i < bookObj.length; i += 1) {
-      bookObj[i].id = (i + 1).toString();
-      objVar += `<li id='lanzz'><p><span>${bookObj[i].bookTitle}</span> by <span>${bookObj[i].arthur}</span> </p> <button onclick = 'BookObj.removeBook(this.id)' id=${bookObj[i].id.toString()}>Remove</button></li>`;
-    }
-    bookList.innerHTML = objVar;
-    localStorage.setItem('inputArr', JSON.stringify(bookObj));
-    BookObj.resetfields()
+  newBook() {
+    const title = this.title.value;
+    const arthur = this.arthur.value;
+    const book = new Books(title, arthur);
+    this.bookObj.push(book);
+    this.displayBooks();
+    this.storeBook();
+    this.title.value = '';
+    this.arthur.value = '';
   }
-});
-let filteredArr = '';
-const outputArr = JSON.parse(localStorage.getItem('inputArr'));
-if (outputArr) {
-  bookObj = outputArr;
-} else if (filteredArr) {
-  bookObj = filteredArr;
+
+  removeBook(index) {
+    this.bookObj.splice(index, 1);
+    this.displayBooks();
+    this.storeBook();
+  }
+
+  displayBooks() {
+    this.bookList.innerHTML = '';
+    this.bookObj.forEach((book, index) => {
+      const bookItem = document.createElement('li');
+
+      const paragraph = document.createElement('p');
+
+      const span1 = document.createElement('span');
+      span1.innerHTML = book.title;
+
+      const span2 = document.createElement('span');
+      span2.innerHTML = `by ${book.arthur}`;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.innerHTML = 'Remove';
+      removeBtn.onclick = () => this.removeBook(index);
+
+      paragraph.appendChild(span1);
+      paragraph.appendChild(span2);
+
+      bookItem.appendChild(paragraph);
+      bookItem.appendChild(removeBtn);
+
+      this.bookList.appendChild(bookItem);
+    });
+  }
+
+  storeBook() {
+    localStorage.setItem('inputArr', JSON.stringify(this.bookObj));
+  }
 }
-BookObj.loop();
+
+const bookCollection = new BookCollection();
 
 setInterval(()=>{
   let timer = document.getElementById("current-time")
   let htimer;
   const d = new Date();
-  day = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
-  month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
+  let day = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  let month = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep','Oct','Nov','Dec'];
   htimer = d.toLocaleTimeString();
   timer.innerHTML =day[d.getDay()]+ ' ' + month[d.getMonth()] +', '+ d.getDate() +' '+ d.getFullYear() + ' '+ htimer;
 },1000)
